@@ -1,18 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/home";
-import Login from "./pages/login";
-import Sign from "./pages/sign";
-
-function App() {
+import React from "react";
+import { RecoilRoot } from "recoil";
+import TodoList from "./component/todoList";
+const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign" element={<Sign />} />
-      </Routes>
-    </BrowserRouter>
+    <RecoilRoot>
+      <div>
+        <TodoList />
+      </div>
+    </RecoilRoot>
   );
-}
+};
 
 export default App;
