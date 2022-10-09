@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useSetRecoilState } from "recoil";
-import { todoListState } from "../atom/atom";
+import React from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { textState, todoListState } from "../atom/atom";
 
 const TodoItemCreator = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useRecoilState(textState);
   const setTodoList = useSetRecoilState(todoListState);
 
   const addItem = () => {
