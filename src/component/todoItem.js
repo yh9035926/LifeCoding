@@ -4,20 +4,25 @@ import { useRecoilState } from "recoil";
 
 const TodoItem = ({ item }) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
+  const index = todoList.findIndex((listItem) => listItem === item);
+
+  const replaceItemAtIndex = (arr, index, newValue) => {
+    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
+  };
 
   const editItemText = (e) => {
-    const newList = todoList.map((listItem) =>
-      listItem.id === item.id ? { ...listItem, text: e.target.value } : listItem
-    );
+    const newList = replaceItemAtIndex(todoList, index, {
+      ...item,
+      text: e.target.value,
+    });
     setTodoList(newList);
   };
 
   const ToggleItemCompletion = () => {
-    const newList = todoList.map((listItem) =>
-      listItem.id === item.id
-        ? { ...listItem, isComplete: !item.isComplete }
-        : listItem
-    );
+    const newList = replaceItemAtIndex(todoList, index, {
+      ...item,
+      isComplete: !item.isComplete,
+    });
     setTodoList(newList);
   };
 

@@ -19,10 +19,19 @@ const TodoItemCreator = () => {
   const onChange = (e) => {
     setInputValue(e.target.value);
   };
-
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
+      addItem();
+    }
+  };
   return (
     <div>
-      <input type="text" value={inputValue} onChange={onChange} />
+      <input
+        type="text"
+        value={inputValue}
+        onChange={onChange}
+        onKeyPress={onEnter}
+      />
       <button onClick={addItem}>Add</button>
     </div>
   );

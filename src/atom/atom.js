@@ -2,15 +2,15 @@ import { atom } from "recoil";
 
 export const todoListState = atom({
   key: "todoListState",
-  default: [
-    {
-      id: 1,
-      text: "허허허",
-    },
-  ],
+  default: [],
 });
 
 export const textState = atom({
   key: "textState",
   default: "",
+});
+
+export const todoListFilterState = atom({
+  key: "todoListFilterState",
+  default: "Show All",
 });
